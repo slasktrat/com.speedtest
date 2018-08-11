@@ -1,0 +1,100 @@
+{
+  "id": "com.speedtest",
+  "name": {
+    "en": "Speedtest"
+  },
+  "description": {
+    "en": "This app gives you speedtest to Homey"
+  },
+  "category": [
+    "internet",
+    "tools"
+  ],
+  "version": "0.0.1",
+  "compatibility": ">=1.5.3",
+  "sdk": 2,
+  "author": {
+    "name": "Espen Ljosland",
+    "email": "espen@ljosland.com"
+  },
+  "images": {
+    "large": "./assets/images/large.jpg",
+    "small": "./assets/images/small.jpg"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "speedtest_completed",
+        "title": {
+          "en": "Speedtest completed"
+        },
+        "tokens": [
+          {
+            "name": "download",
+            "type": "number",
+            "title": {
+              "en": "Download speed (mbps)"
+            },
+            "example": {
+              "en": "25.67"
+            }
+          },
+          {
+            "name": "downloadDiff",
+            "type": "number",
+            "title": {
+              "en": "Download speed difference from last result (percentage)"
+            },
+            "example": {
+              "en": "25.67"
+            }
+          },
+          {
+            "name": "upload",
+            "type": "number",
+            "title": {
+              "en": "Upload speed (mbps)"
+            },
+            "example": {
+              "en": "25.67"
+            }
+          },
+          {
+            "name": "uploadDiff",
+            "type": "number",
+            "title": {
+              "en": "Upload speed difference from last result (percentage)"
+            },
+            "example": {
+              "en": "25.67"
+            }
+          },
+          {
+            "name": "ping",
+            "type": "number",
+            "title": {
+              "en": "Ping latency"
+            },
+            "example": {
+              "en": "25.67"
+            }
+          }
+        ]
+      },
+      {
+        "id": "speedtest_failed",
+        "title": {
+          "en": "Speedtest failed"
+        }
+      }
+    ],
+    "actions": [
+      {
+        "id": "run_speedtest",
+        "title": {
+          "en": "Run speedtest"
+        }
+      }
+    ]
+  }
+}

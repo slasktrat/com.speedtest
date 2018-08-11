@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+</head>
+<body>
+	<style type="text/css">
+		.row label {
+			width: 450px;
+		}
+	</style>
+  <h1>Speedtest Settings</h1>
+	<fieldset>
+		<legend>Settings</legend>
+		<div class="field row">
+			<label for="interval">Speedtest interval in minutes (minimum 10, 0 = disabled)</label>
+			<input id="interval" type="number" value="60" min="10" />
+		</div>
+	</fieldset>
+	<button id="save" class="left">Save</button>
+	
+	<script type="text/javascript">
+
+	function onHomeyReady(Homey) {
+        var intervalElement = document.getElementById('interval');
+        var saveElement = document.getElementById('save');
+
+        Homey.get('interval', function (err, interval) {
+            if (err) return Homey.alert(err);
+            intervalElement.value = interval;
+        });
+
+        saveElement.addEventListener('click', function (e) {
+            var interval = intervalElement.value;
+            if(Number.isNaN(interval) || interval <= 0)
+                interval = 0;
+            else if (interval < 10)
+                interval = 10;
+            intervalElement.value = interval;
+
+            Homey.set('interval', interval, function (err) {
+                if (err) return Homey.alert(err);
+            });
+        });
+
+        Homey.ready();
+    }
+	</script>
+ </body>
+</html>
